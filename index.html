@@ -15,7 +15,7 @@
             font-family: 'Inter', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
             color: #1a1a2e;
-            background: #ffffff;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 50%, #f0f7ff 100%);
             min-height: 100vh;
         }
 
@@ -27,15 +27,15 @@
 
         /* ヘッダー */
         header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             color: #1a1a2e;
             padding: 1.5rem 0;
-            box-shadow: 0 8px 32px rgba(0, 150, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 120, 215, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(0, 150, 255, 0.1);
+            border-bottom: 2px solid rgba(0, 150, 255, 0.15);
         }
 
         header .container {
@@ -46,8 +46,8 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%);
+            font-weight: 900;
+            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -57,7 +57,7 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         nav a {
@@ -65,23 +65,24 @@
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
             position: relative;
         }
 
         nav a:hover {
-            color: #0096ff;
+            color: #0078d4;
         }
 
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%);
+            height: 3px;
+            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
             transition: width 0.3s ease;
+            border-radius: 2px;
         }
 
         nav a:hover::after {
@@ -90,15 +91,16 @@
 
         /* ヒーローセクション */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 150, 255, 0.08) 0%, rgba(0, 212, 255, 0.03) 100%);
-            border: 1px solid rgba(0, 150, 255, 0.15);
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(0, 120, 212, 0.08) 0%, rgba(0, 164, 239, 0.05) 50%, rgba(0, 120, 212, 0.03) 100%);
+            border: 2px solid rgba(0, 150, 255, 0.2);
+            border-radius: 24px;
             color: #1a1a2e;
             padding: 8rem 0;
             text-align: center;
             margin: 3rem 0;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .hero::before {
@@ -108,7 +110,7 @@
             right: -10%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 164, 239, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
@@ -120,7 +122,7 @@
             left: -5%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(0, 150, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 120, 212, 0.12) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 6s ease-in-out infinite reverse;
         }
@@ -133,9 +135,9 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: -2px;
-            background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%);
+            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -146,7 +148,7 @@
             opacity: 0.75;
             margin-bottom: 2.5rem;
             color: #1a1a2e;
-            font-weight: 300;
+            font-weight: 500;
         }
 
         @keyframes float {
@@ -162,10 +164,10 @@
 
         .services h2 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 4rem;
-            color: #1a1a2e;
-            font-weight: 800;
+            color: #0078d4;
+            font-weight: 900;
             letter-spacing: -1px;
         }
 
@@ -182,14 +184,15 @@
             border: none;
             padding: 0;
             background: transparent;
-            transition: all 0.3s ease;
-            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            border-radius: 20px;
             overflow: hidden;
-            height: 300px;
+            height: 320px;
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
-            box-shadow: 0 10px 30px rgba(0, 150, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 120, 212, 0.12);
+            border: 2px solid rgba(0, 150, 255, 0.15);
         }
 
         .service-button::before {
@@ -199,19 +202,20 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%);
+            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
             opacity: 0;
             z-index: 1;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
         .service-button:hover::before {
-            opacity: 0.15;
+            opacity: 0.2;
         }
 
         .service-button:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 60px rgba(0, 150, 255, 0.2);
+            transform: translateY(-18px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 120, 212, 0.25);
+            border-color: rgba(0, 150, 255, 0.4);
         }
 
         .service-image {
@@ -231,63 +235,70 @@
             z-index: 2;
             padding: 2.5rem;
             width: 100%;
-            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255, 255, 255, 0.98) 100%);
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255, 255, 255, 0.99) 60%);
             transform: translateY(0);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
         }
 
         .service-button:hover .service-content {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
         }
 
         .service-content h3 {
-            color: #0096ff;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         .service-content p {
-            color: #555;
-            font-size: 0.9rem;
-            opacity: 0.9;
+            color: #333;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 500;
         }
 
         /* About セクション */
         .about {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(0, 150, 255, 0.05) 0%, rgba(0, 212, 255, 0.02) 100%);
-            border: 1px solid rgba(0, 150, 255, 0.1);
-            border-radius: 20px;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 120, 212, 0.08) 0%, rgba(0, 164, 239, 0.05) 50%, rgba(0, 120, 212, 0.03) 100%);
+            border: 2px solid rgba(0, 150, 255, 0.2);
+            border-radius: 24px;
             text-align: center;
             margin: 3rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .about h2 {
-            color: #1a1a2e;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
+            color: #0078d4;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            font-weight: 900;
             letter-spacing: -1px;
         }
 
         .about p {
-            font-size: 1.1rem;
-            color: #555;
-            max-width: 700px;
+            font-size: 1.15rem;
+            color: #1a1a2e;
+            max-width: 800px;
             margin: 0 auto;
-            line-height: 1.8;
+            line-height: 1.9;
+            font-weight: 500;
         }
 
         /* Footer */
         footer {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             color: #666;
             text-align: center;
             padding: 2.5rem 0;
-            border-top: 1px solid rgba(0, 150, 255, 0.1);
+            border-top: 2px solid rgba(0, 150, 255, 0.15);
             margin-top: 4rem;
+            font-weight: 500;
         }
 
         /* モーダル */
@@ -299,22 +310,22 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
             animation: fadeIn 0.3s;
             overflow-y: auto;
         }
 
         .modal-content {
-            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-            border: 1px solid rgba(0, 150, 255, 0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
+            border: 2px solid rgba(0, 150, 255, 0.3);
             margin: 5% auto;
-            padding: 2.5rem;
-            border-radius: 16px;
+            padding: 3rem;
+            border-radius: 20px;
             width: 85%;
-            max-width: 550px;
-            box-shadow: 0 20px 60px rgba(0, 150, 255, 0.2);
-            animation: slideIn 0.3s ease;
+            max-width: 600px;
+            box-shadow: 0 25px 80px rgba(0, 120, 212, 0.25);
+            animation: slideIn 0.3s cubic-bezier(0.23, 1, 0.320, 1);
         }
 
         .close {
@@ -328,51 +339,54 @@
         }
 
         .close:hover {
-            color: #0096ff;
+            color: #0078d4;
         }
 
         #modalTitle {
-            color: #0096ff;
+            color: #0078d4;
             margin-bottom: 1.5rem;
             margin-top: 1rem;
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         #modalContent {
             margin-bottom: 2rem;
-            line-height: 1.8;
-            color: #555;
+            line-height: 1.9;
+            color: #333;
+            font-weight: 500;
         }
 
         #modalContent strong {
-            color: #0096ff;
+            color: #0078d4;
+            font-weight: 700;
         }
 
         #modalContent ul {
-            margin: 1rem 0 1rem 1.5rem;
+            margin: 1.2rem 0 1.2rem 1.8rem;
         }
 
         #modalContent li {
-            margin: 0.5rem 0;
-            color: #555;
+            margin: 0.7rem 0;
+            color: #333;
         }
 
         .btn {
             padding: 1rem 2.5rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 1rem;
             transition: all 0.3s ease;
-            font-weight: 600;
-            background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%);
+            font-weight: 700;
+            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
             color: white;
             display: inline-block;
             text-decoration: none;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 120, 212, 0.25);
         }
 
         .btn::before {
@@ -382,14 +396,14 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
+            background: linear-gradient(135deg, #00a4ef 0%, #0078d4 100%);
             z-index: -1;
             transition: left 0.3s ease;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 150, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 120, 212, 0.35);
             letter-spacing: 0.5px;
         }
 
@@ -400,7 +414,7 @@
 
         @keyframes slideIn {
             from {
-                transform: translateY(-50px);
+                transform: translateY(-40px);
                 opacity: 0;
             }
             to {
@@ -413,17 +427,23 @@
         @media (max-width: 1024px) {
             .service-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+
+            .services h2,
+            .about h2 {
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 768px) {
             .service-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .hero h1 {
@@ -434,8 +454,13 @@
                 font-size: 1rem;
             }
 
+            .services h2,
+            .about h2 {
+                font-size: 1.8rem;
+            }
+
             nav ul {
-                gap: 1rem;
+                gap: 1.5rem;
                 flex-direction: column;
                 font-size: 0.9rem;
             }
@@ -443,6 +468,15 @@
             header .container {
                 flex-direction: column;
                 gap: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                margin: 20% auto;
+            }
+
+            #modalTitle {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -473,8 +507,8 @@
                 <h2>Our Services</h2>
                 <div class="service-grid">
                     <button class="service-button" onclick="openService('cloud')">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0096ff 0%, #00d4ff 100%); z-index: 0;"></div>
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 150, 255, 0.2) 0%, rgba(255, 255, 255, 0.95) 100%); z-index: 1;"></div>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%); z-index: 0;"></div>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 120, 212, 0.3) 0%, rgba(255, 255, 255, 0.98) 70%); z-index: 1;"></div>
                         <div class="service-content">
                             <h3>☁️ クラウド管理</h3>
                             <p>エンタープライズグレードのクラウドソリューション</p>
@@ -482,8 +516,8 @@
                     </button>
 
                     <button class="service-button" onclick="openService('analytics')">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0070e0 0%, #00a8ff 100%); z-index: 0;"></div>
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 120, 255, 0.2) 0%, rgba(255, 255, 255, 0.95) 100%); z-index: 1;"></div>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0066cc 0%, #0096ff 100%); z-index: 0;"></div>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 102, 204, 0.3) 0%, rgba(255, 255, 255, 0.98) 70%); z-index: 1;"></div>
                         <div class="service-content">
                             <h3>📊 データ分析</h3>
                             <p>AI駆動のインテリジェント分析プラットフォーム</p>
@@ -491,8 +525,8 @@
                     </button>
 
                     <button class="service-button" onclick="openService('security')">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0050cc 0%, #0080ff 100%); z-index: 0;"></div>
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 80, 255, 0.2) 0%, rgba(255, 255, 255, 0.95) 100%); z-index: 1;"></div>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #0050d8 0%, #0078d4 100%); z-index: 0;"></div>
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0, 80, 216, 0.3) 0%, rgba(255, 255, 255, 0.98) 70%); z-index: 1;"></div>
                         <div class="service-content">
                             <h3>🔒 セキュリティ</h3>
                             <p>次世代型の統合セキュリティソリューション</p>
