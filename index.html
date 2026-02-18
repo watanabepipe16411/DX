@@ -372,6 +372,11 @@
             color: #333;
         }
 
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
         .btn {
             padding: 1rem 2.5rem;
             border: none;
@@ -387,6 +392,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 120, 212, 0.25);
+            flex: 1;
         }
 
         .btn::before {
@@ -405,6 +411,16 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(0, 120, 212, 0.35);
             letter-spacing: 0.5px;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 120, 212, 0.25);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 12px 30px rgba(0, 120, 212, 0.35);
         }
 
         @keyframes fadeIn {
@@ -478,6 +494,14 @@
             #modalTitle {
                 font-size: 1.5rem;
             }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                flex: none;
+            }
         }
     </style>
 </head>
@@ -498,7 +522,7 @@
         <section class="hero">
             <div class="container">
                 <h1>SEDIA Digital Transformation Services</h1>
-                <p>ビジネスの成長を支援する渡辺パイプの統合デジタルソリューション</p>
+                <p>ビジネスの成長を支援する統合デジタルソリューション</p>
             </div>
         </section>
 
@@ -508,7 +532,7 @@
                 <div class="service-grid">
                     <!-- 1段目 -->
                     <button class="service-button" onclick="openService('cloud')">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="クラウド���理" class="service-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="クラウド管理" class="service-image">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(26, 26, 46, 0.1) 0%, rgba(26, 26, 46, 0.85) 50%, #1a1a2e 100%); z-index: 1;"></div>
                         <div class="service-content">
                             <h3>☁️ クラウド管理</h3>
@@ -573,7 +597,7 @@
                     その中でも重要なことは、「働き方改革を推進しながら、生産性は向上」させていくこと。<br>
                     この業界でも「設計」「施工」「維持管理」など、あらゆる側面で「DX」による業務改革が必要であるということは疑う余地がありません。<br>
                     渡辺パイプは、以前から取り組んでまいりました「情報のネットワ ーク化」を活かし、深刻な人手不足や技術継承の停滞などが懸念される建設業界の課題解決につながるサービスを開発してきました。<br>
-                    ここで、お客さまのお仕事にお役立ていただけるサービスメニューを紹介いたします。</p>
+                    ここで、お客さまのお仕事にお役立ていただけるサービスメニューを紹介いたします。</p></p>
             </div>
         </section>
     </main>
@@ -589,7 +613,10 @@
             <span class="close" onclick="closeService()">&times;</span>
             <h2 id="modalTitle"></h2>
             <p id="modalContent"></p>
-            <button class="btn" onclick="navigateToLogin()">ログイン画面へ</button>
+            <div class="button-group">
+                <button class="btn" onclick="navigateToService()">サービスページへ</button>
+                <button class="btn btn-secondary" onclick="navigateToLogin()">ログイン画面へ</button>
+            </div>
         </div>
     </div>
 
@@ -611,7 +638,8 @@
                     <strong>対象企業：</strong>中堅企業～大企業<br><br>
                     <strong>導入効果：</strong>運用コスト削減、業務効率化、セキュリティ向上
                 `,
-                url: 'https://example.com/cloud-login'
+                serviceUrl: 'https://example.com/cloud-services',
+                loginUrl: 'https://example.com/cloud-login'
             },
             analytics: {
                 title: 'データ分析・レポート',
@@ -627,7 +655,8 @@
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>データ駆動経営、意思決定の高速化、競争力強化
                 `,
-                url: 'https://example.com/analytics-login'
+                serviceUrl: 'https://example.com/analytics-services',
+                loginUrl: 'https://example.com/analytics-login'
             },
             security: {
                 title: 'セキュリティ管理',
@@ -643,7 +672,8 @@
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>情報漏洩防止、法的リスク軽減、信頼性向上
                 `,
-                url: 'https://example.com/security-login'
+                serviceUrl: 'https://example.com/security-services',
+                loginUrl: 'https://example.com/security-login'
             },
             automation: {
                 title: '自動化・AI',
@@ -659,7 +689,8 @@
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>業務効率化、コスト削減、ヒューマンエラー削減
                 `,
-                url: 'https://example.com/automation-login'
+                serviceUrl: 'https://example.com/automation-services',
+                loginUrl: 'https://example.com/automation-login'
             },
             integration: {
                 title: '統合ソリューション',
@@ -667,7 +698,7 @@
                     <strong>概要：</strong>既存システムとの統合・連携ソリューションを提供します。<br><br>
                     <strong>主な機能：</strong>
                     <ul>
-                        <li>API連携による システム統合</li>
+                        <li>API連携によるシステム統合</li>
                         <li>データ連携・同期機能</li>
                         <li>レガシーシステムの最新化</li>
                         <li>マイクロサービスアーキテクチャ構築</li>
@@ -675,7 +706,8 @@
                     <strong>対象企業：</strong>中堅企業～大企業<br><br>
                     <strong>導入効果：</strong>業務効率化、システム刷新、スケーラビリティ向上
                 `,
-                url: 'https://example.com/integration-login'
+                serviceUrl: 'https://example.com/integration-services',
+                loginUrl: 'https://example.com/integration-login'
             },
             consulting: {
                 title: 'DXコンサルティング',
@@ -691,7 +723,8 @@
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>DX推進加速、ビジネス変革、競争力強化
                 `,
-                url: 'https://example.com/consulting-login'
+                serviceUrl: 'https://example.com/consulting-services',
+                loginUrl: 'https://example.com/consulting-login'
             }
         };
 
@@ -707,9 +740,15 @@
             }
         }
 
+        function navigateToService() {
+            if (currentService && serviceDetails[currentService]) {
+                window.location.href = serviceDetails[currentService].serviceUrl;
+            }
+        }
+
         function navigateToLogin() {
             if (currentService && serviceDetails[currentService]) {
-                window.location.href = serviceDetails[currentService].url;
+                window.location.href = serviceDetails[currentService].loginUrl;
             }
         }
 
