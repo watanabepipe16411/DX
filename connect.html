@@ -1,1031 +1,386 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>セディア・コネクト - 施工店マッチングサービス</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', 'Hiragino Sans', 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(180deg, #f0f4f8 0%, #e8f1f8 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            box-shadow: 0 15px 50px rgba(0, 102, 204, 0.15);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        
-        /* ===== ヘッダー ===== */
-        header {
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 50%, #003d80 100%);
-            color: white;
-            padding: 80px 20px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="dots" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="3" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23dots)"/><path d="M0,300 Q300,250 600,300 T1200,300" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none"/><circle cx="100" cy="150" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="1100" cy="450" r="100" fill="rgba(255,255,255,0.05)"/></svg>');
-            opacity: 0.5;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .header-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .service-title {
-            font-size: 52px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-            letter-spacing: 2px;
-        }
-        
-        .subtitle {
-            font-size: 28px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-            opacity: 0.95;
-        }
-        
-        .tagline {
-            font-size: 18px;
-            line-height: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        .tagline-bold {
-            font-weight: 600;
-            font-size: 20px;
-        }
-        
-        /* ===== メインコンテンツ ===== */
-        .content {
-            padding: 60px 20px;
-        }
-        
-        .section {
-            margin-bottom: 70px;
-        }
-        
-        .section h2 {
-            font-size: 32px;
-            color: #0052a3;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 4px solid #0066cc;
-            position: relative;
-            font-weight: 800;
-        }
-        
-        .section h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: -20px;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #0066cc, #00ccff);
-            border-radius: 2px;
-        }
-        
-        /* ===== 問題解決セクション ===== */
-        .solution-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .solution-item {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 100%);
-            padding: 40px;
-            border-radius: 15px;
-            border: 2px solid #0066cc;
-            border-left: 6px solid #0066cc;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .solution-item::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-        
-        .solution-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.25);
-            border-color: #00ccff;
-        }
-        
-        .solution-icon {
-            font-size: 48px;
-            color: #0066cc;
-            margin-bottom: 15px;
-        }
-        
-        .solution-item h3 {
-            color: #0052a3;
-            font-size: 20px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .solution-item p {
-            color: #333;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-            font-size: 15px;
-        }
-        
-        /* ===== 無料セクション ===== */
-        .free-section {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 50%, #c0deff 100%);
-            border: 3px solid #0066cc;
-            padding: 50px 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.2);
-        }
-        
-        .free-section::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 204, 255, 0.1) 0%, transparent 70%);
-        }
-        
-        .free-icon {
-            font-size: 60px;
-            color: #0066cc;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        .free-section h3 {
-            font-size: 28px;
-            color: #0052a3;
-            margin-bottom: 25px;
-            font-weight: 800;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .free-items {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .free-item {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 12px;
-            font-weight: 700;
-            color: #0052a3;
-            font-size: 16px;
-            border: 2px solid #0066cc;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
-        }
-        
-        .free-item:hover {
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
-            color: white;
-            transform: scale(1.05);
-        }
-        
-        .free-item::before {
-            content: '⭐ ';
-            color: #ffc107;
-            margin-right: 5px;
-        }
-        
-        .compensation-highlight {
-            background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%);
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 25px;
-            font-size: 22px;
-            color: #0052a3;
-            font-weight: 900;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
-        }
-        
-        .note-small {
-            font-size: 13px;
-            color: #0066cc;
-            margin-top: 15px;
-            position: relative;
-            z-index: 1;
-            font-weight: 500;
-        }
-        
-        /* ===== ネットワーク統計 ===== */
-        .network-stats {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 100%);
-            padding: 50px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border: 2px solid #0066cc;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            text-align: center;
-        }
-        
-        .stat-box {
-            background: linear-gradient(135deg, white 0%, #f0f8ff 100%);
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
-            transition: all 0.4s ease;
-            border: 2px solid #0066cc;
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.3);
-        }
-        
-        .stat-icon {
-            font-size: 40px;
-            color: #0066cc;
-            margin-bottom: 15px;
-        }
-        
-        .stat-number {
-            font-size: 42px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 16px;
-            color: #0052a3;
-            line-height: 1.6;
-            font-weight: 600;
-        }
-        
-        /* ===== 工事補償セクション ===== */
-        .compensation-section {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 100%);
-            padding: 40px;
-            border-radius: 15px;
-            border: 3px solid #0066cc;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.15);
-        }
-        
-        .compensation-header {
-            background-color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border-left: 5px solid #0066cc;
-        }
-        
-        .compensation-header p {
-            font-size: 16px;
-            line-height: 1.9;
-            color: #333;
-        }
-        
-        .amount-highlight {
-            font-size: 36px;
-            color: white;
-            font-weight: 900;
-            margin: 20px 0;
-            background: linear-gradient(135deg, #ff6b35 0%, #d32f2f 100%);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.3);
-        }
-        
-        /* ===== 注記 ===== */
-        .notes {
-            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
-            border-left: 5px solid #ffc107;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            border: 2px solid #ffb74d;
-        }
-        
-        .notes-title {
-            font-weight: 800;
-            color: #e65100;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-        
-        .notes-content {
-            font-size: 14px;
-            line-height: 1.9;
-            color: #333;
-        }
-        
-        .notes-content p {
-            margin-bottom: 10px;
-        }
-        
-        /* ===== フロー図 ===== */
-        .flow-container {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border: 2px solid #0066cc;
-        }
-        
-        .flow-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .flow-step {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .flow-arrow {
-            color: #0066cc;
-            font-size: 32px;
-            font-weight: bold;
-            min-width: 50px;
-            text-align: center;
-            animation: slideDown 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes slideDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-        
-        .flow-content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            flex: 1;
-            border-left: 5px solid #0066cc;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .flow-content:hover {
-            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.2);
-            transform: translateX(5px);
-        }
-        
-        .flow-content strong {
-            display: block;
-            color: #0066cc;
-            margin-bottom: 10px;
-            font-size: 17px;
-            font-weight: 700;
-        }
-        
-        .flow-content span {
-            font-size: 14px;
-            color: #555;
-            display: block;
-            line-height: 1.7;
-        }
-        
-        .flow-number {
-            display: inline-block;
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: bold;
-            margin-right: 10px;
-            font-size: 18px;
-        }
-        
-        /* ===== 保険セクション ===== */
-        .insurance-section {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border: 2px solid #0066cc;
-        }
-        
-        .insurance-intro {
-            background-color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border-bottom: 4px solid #0066cc;
-            text-align: center;
-        }
-        
-        .insurance-intro strong {
-            display: block;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        
-        .insurance-intro strong:first-child {
-            color: #d32f2f;
-            font-size: 20px;
-        }
-        
-        .insurance-intro strong:last-of-type {
-            color: #0066cc;
-            font-size: 20px;
-        }
-        
-        .insurance-points {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        .insurance-point {
-            background-color: white;
-            padding: 30px;
-            padding-left: 80px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
-            position: relative;
-            transition: all 0.3s ease;
-            border: 2px solid #0066cc;
-        }
-        
-        .insurance-point:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.2);
-        }
-        
-        .insurance-point::before {
-            content: attr(data-number);
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
-        }
-        
-        .insurance-point h4 {
-            color: #0052a3;
-            font-size: 18px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .insurance-point p {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-        
-        .discount {
-            color: #d32f2f;
-            font-weight: 900;
-            font-size: 20px;
-        }
-        
-        /* ===== CTA セクション ===== */
-        .cta-section {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 100%);
-            border: 3px solid #0066cc;
-            padding: 50px 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.15);
-        }
-        
-        .cta-icon {
-            font-size: 50px;
-            color: #0066cc;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section h3 {
-            font-size: 22px;
-            color: #0052a3;
-            margin-bottom: 25px;
-            font-weight: 800;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #0066cc 0%, #004099 100%);
-            color: white;
-            padding: 18px 50px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 18px;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
-            margin: 10px 5px;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 102, 204, 0.4);
-            background: linear-gradient(135deg, #004099 0%, #003080 100%);
-        }
-        
-        .cta-text {
-            font-size: 14px;
-            color: #0066cc;
-            margin-top: 15px;
-            font-weight: 600;
-        }
-        
-        /* ===== 連絡先 ===== */
-        .contact-section {
-            background: linear-gradient(135deg, #e8f4ff 0%, #d4e8ff 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-            border: 2px solid #0066cc;
-            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.15);
-        }
-        
-        .contact-icon {
-            font-size: 45px;
-            color: #0066cc;
-            margin-bottom: 20px;
-        }
-        
-        .contact-section h3 {
-            font-size: 22px;
-            color: #0052a3;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-        
-        .contact-section p {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 12px;
-            line-height: 1.8;
-        }
-        
-        /* ===== フッター ===== */
-        footer {
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 50%, #003d80 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300"><defs><pattern id="wave" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M0,50 Q25,30 50,50 T100,50" stroke="rgba(255,255,255,0.05)" stroke-width="2" fill="none"/></pattern></defs><rect width="1200" height="300" fill="url(%23wave)"/></svg>');
-        }
-        
-        footer h2 {
-            font-size: 28px;
-            border: none;
-            margin-bottom: 20px;
-            font-weight: 900;
-            position: relative;
-            z-index: 1;
-            letter-spacing: 1px;
-        }
-        
-        footer h2::before {
-            content: '';
-        }
-        
-        .footer-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        
-        .footer-link {
-            font-size: 16px;
-            margin-top: 25px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .footer-link a {
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 30px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            display: inline-block;
-            transition: all 0.4s ease;
-            font-weight: 700;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .footer-link a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        footer p {
-            font-size: 12px;
-            margin-top: 30px;
-            opacity: 0.85;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* ===== レスポンシブ ===== */
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 10px;
-            }
-            
-            header {
-                padding: 50px 20px;
-            }
-            
-            .header-icon {
-                font-size: 40px;
-            }
-            
-            .service-title {
-                font-size: 36px;
-            }
-            
-            .subtitle {
-                font-size: 20px;
-            }
-            
-            .tagline {
-                font-size: 16px;
-            }
-            
-            .solution-box {
-                grid-template-columns: 1fr;
-            }
-            
-            .free-items {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section h2 {
-                font-size: 24px;
-            }
-            
-            .flow-step {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .flow-arrow {
-                transform: rotate(90deg);
-                margin-left: 0;
-                margin-bottom: 10px;
-            }
-            
-            .insurance-point {
-                padding-left: 70px;
-            }
-            
-            .insurance-point::before {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-            
-            .content {
-                padding: 30px 15px;
-            }
-            
-            .free-section {
-                padding: 30px 20px;
-            }
-            
-            footer {
-                padding: 40px 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セディア・コネクト</title>
+
+<style>
+
+/* =====================
+   基本設定
+===================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:"Segoe UI","Hiragino Sans",sans-serif;
+background:#0c0f14;
+color:#e5e7eb;
+line-height:1.7;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:#0f141c;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(0,200,255,0.15);
+}
+
+/* =====================
+   ヘッダー
+===================== */
+
+header{
+background:linear-gradient(135deg,#020617,#0f172a,#020617);
+padding:100px 20px;
+text-align:center;
+position:relative;
+}
+
+header::after{
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at top right,
+rgba(0,180,255,.15),transparent 60%);
+}
+
+.header-content{
+position:relative;
+z-index:2;
+}
+
+.header-icon{
+font-size:60px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 10px #00c8ff);
+}
+
+.service-title{
+font-size:52px;
+font-weight:900;
+letter-spacing:3px;
+color:#fff;
+text-shadow:0 0 20px #00c8ff;
+}
+
+.subtitle{
+font-size:24px;
+color:#00c8ff;
+margin-bottom:25px;
+}
+
+.tagline{
+font-size:18px;
+opacity:.9;
+}
+
+/* =====================
+   セクション共通
+===================== */
+
+.content{
+padding:60px 20px;
+}
+
+.section{
+margin-bottom:80px;
+}
+
+.section h2{
+font-size:32px;
+margin-bottom:35px;
+border-left:5px solid #00c8ff;
+padding-left:15px;
+color:#fff;
+}
+
+/* =====================
+   カード系共通
+===================== */
+
+.card{
+background:rgba(15,23,42,.9);
+border:1px solid rgba(0,200,255,.3);
+border-radius:12px;
+padding:35px;
+box-shadow:0 10px 30px rgba(0,0,0,.6);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,200,255,.3);
+}
+
+/* =====================
+   お悩み
+===================== */
+
+.solution-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.solution-icon{
+font-size:40px;
+margin-bottom:15px;
+color:#00c8ff;
+}
+
+/* =====================
+   無料
+===================== */
+
+.free-items{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin:25px 0;
+}
+
+.free-item{
+background:#020617;
+padding:20px;
+border:1px solid #00c8ff;
+border-radius:10px;
+font-weight:bold;
+}
+
+.compensation-highlight{
+background:linear-gradient(135deg,#00c8ff,#0066ff);
+color:#000;
+padding:25px;
+border-radius:10px;
+font-size:22px;
+font-weight:900;
+}
+
+/* =====================
+   統計
+===================== */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.stat-number{
+font-size:42px;
+font-weight:900;
+color:#00c8ff;
+}
+
+/* =====================
+   フロー
+===================== */
+
+.flow-content{
+background:#020617;
+border-left:5px solid #00c8ff;
+padding:25px;
+border-radius:10px;
+}
+
+.flow-number{
+background:#00c8ff;
+color:#000;
+width:36px;
+height:36px;
+border-radius:50%;
+display:inline-block;
+text-align:center;
+line-height:36px;
+font-weight:bold;
+margin-right:10px;
+}
+
+/* =====================
+   CTA
+===================== */
+
+.cta-section{
+background:linear-gradient(135deg,#020617,#020617,#0f172a);
+border:1px solid #00c8ff;
+padding:50px;
+text-align:center;
+border-radius:15px;
+}
+
+.cta-button{
+display:inline-block;
+margin-top:20px;
+padding:15px 45px;
+background:linear-gradient(135deg,#00c8ff,#0066ff);
+color:#000;
+font-weight:900;
+border-radius:8px;
+text-decoration:none;
+transition:.3s;
+}
+
+.cta-button:hover{
+transform:scale(1.05);
+}
+
+/* =====================
+   連絡先
+===================== */
+
+.contact-section{
+text-align:center;
+}
+
+/* =====================
+   フッター
+===================== */
+
+footer{
+background:#020617;
+padding:60px 20px;
+text-align:center;
+border-top:1px solid rgba(0,200,255,.3);
+}
+
+.footer-link a{
+display:inline-block;
+margin-top:20px;
+padding:12px 30px;
+border:1px solid #00c8ff;
+border-radius:8px;
+color:#00c8ff;
+text-decoration:none;
+transition:.3s;
+}
+
+.footer-link a:hover{
+background:#00c8ff;
+color:#000;
+}
+
+/* =====================
+   レスポンシブ
+===================== */
+
+@media(max-width:768px){
+
+.service-title{
+font-size:36px;
+}
+
+.solution-box,
+.stats-grid,
+.free-items{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- ===== ヘッダー ===== -->
-        <header>
-            <div class="header-content">
-                <div class="header-icon">🤝</div>
-                <h1 class="service-title">セディア・コネクト</h1>
-                <p class="subtitle">施工店マッチングサービス</p>
-                <div class="tagline">
-                    <p><span class="tagline-bold">貴方のお悩みを解決！</span></p>
-                    <p><span class="tagline-bold">工事保障付きの現場を施工店様へ</span></p>
-                </div>
-            </div>
-        </header>
-        
-        <!-- ===== メインコンテンツ ===== -->
-        <div class="content">
-            <!-- 問題解決セクション -->
-            <div class="section">
-                <h2>あなたのお悩みを解決します</h2>
-                <div class="solution-box">
-                    <div class="solution-item">
-                        <div class="solution-icon">🏢</div>
-                        <h3>職人不足でお困りの<br>元請け様へ</h3>
-                        <p>優秀な施工店との出会いをサポート。スムーズな職人手配で工事をお進めください。安定した現場運営を実現します。</p>
-                    </div>
-                    <div class="solution-item">
-                        <div class="solution-icon">🔧</div>
-                        <h3>より良い現場をお探しの<br>施工店様へ</h3>
-                        <p>工事補償付きの信頼できる現場情報をご提供。安心して工事に取り組めます。新しい出会いと成長の機会です。</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 無料セクション -->
-            <div class="section">
-                <h2>すべて無料でご利用いただけます</h2>
-                <div class="free-section">
-                    <div class="free-icon">💰</div>
-                    <h3>セディア・コネクトなら</h3>
-                    <div class="free-items">
-                        <div class="free-item">入会金・年会費 無料</div>
-                        <div class="free-item">紹介手数料 無料</div>
-                        <div class="free-item">工事補償 無料</div>
-                    </div>
-                    <div class="compensation-highlight">
-                        🎯 最大１０００万円の工事補償も無料でついてくる
-                    </div>
-                    <div class="note-small">
-                        ※工事補償は事前に申し込みが必要です
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ネットワーク統計 -->
-            <div class="section">
-                <h2>元請けさまと施工店さまをつなげるネットワーク</h2>
-                <div class="network-stats">
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <div class="stat-icon">👥</div>
-                            <div class="stat-number">16,000社</div>
-                            <div class="stat-label">会員数</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-icon">📊</div>
-                            <div class="stat-number">2,600件</div>
-                            <div class="stat-label">累計紹介数</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-icon">📈</div>
-                            <div class="stat-number">80％</div>
-                            <div class="stat-label">紹介率</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 工事補償セクション -->
-            <div class="section">
-                <h2>セディア・コネクトの工事補償のご案内</h2>
-                <div class="compensation-section">
-                    <div class="compensation-header">
-                        <p>
-                            セディアコネクト補償は、セディア・コネクト内で行われた工事について事故があった場合に
-                        </p>
-                        <div class="amount-highlight">🛡️ 1000万円まで無料で補償</div>
-                        <p>するサービスです。</p>
-                    </div>
-                    
-                    <div class="notes">
-                        <div class="notes-title">📋 補償内容に関する重要なご案内</div>
-                        <div class="notes-content">
-                            <p>※1. 免責金額 5万円</p>
-                            <p>※2. 登録会社毎に年2回まで利用可能（保険未確認の場合は年1回まで利用���能）</p>
-                            <p>※3. 引き渡し後に発生した事故は対象外</p>
-                            <p>※4. 1000万円を超過する分については自己負担</p>
-                            <p>※5. 工事内容・工期・金額がわかる書面（注文書など）の写しの提出が事前に必要</p>
-                            <p>※6. 工事中の対物事故が対象となります</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 工事補償の流れ -->
-            <div class="section">
-                <h2>セディア・コネクトの工事補償の流れ</h2>
-                <div class="flow-container">
-                    <div class="flow-steps">
-                        <div class="flow-step">
-                            <div class="flow-content">
-                                <span class="flow-number">1</span>
-                                <strong>マッチング成立</strong>
-                                <span>セディア・コネクトを通じて、元請けさまと施工店さまのマッチングが成立します。</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-step">
-                            <div class="flow-arrow">▼</div>
-                        </div>
-                        
-                        <div class="flow-step">
-                            <div class="flow-content">
-                                <span class="flow-number">2</span>
-                                <strong>工事金額が分かる書類を提出</strong>
-                                <span>工事金額が分かる書類を専用フォームに添付して提出してください。<br>
-                                ※ 契約書、注文請書、見積書等<br>
-                                ※ 事前の提出が必須となります</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-step">
-                            <div class="flow-arrow">▼</div>
-                        </div>
-                        
-                        <div class="flow-step">
-                            <div class="flow-content">
-                                <span class="flow-number">3</span>
-                                <strong style="color: #d32f2f;">万が一の事故も安心</strong>
-                                <span style="color: #d32f2f; font-weight: bold;">工事中の対物事故を1000万円までセディア・コネクトが補償します</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 保険制度セクション -->
-            <div class="section">
-                <h2>工事の保険団体制度で保険を見直してみませんか？</h2>
-                <div class="insurance-section">
-                    <div class="insurance-intro">
-                        <strong style="color: #d32f2f;">💼 セディア・コネクト会員様限定</strong>
-                        <strong style="color: #0066cc;">「ビジネス総合保険制度」3つのポイント</strong>
-                    </div>
-                    
-                    <div class="insurance-points">
-                        <div class="insurance-point" data-number="1">
-                            <h4>工事を取り巻く様々なリスクをまとめて補償！</h4>
-                            <p>契約手続きや管理がカンタンで、複雑な事務作業を大幅に削減できます。一括管理でストレスフリー！</p>
-                        </div>
-                        
-                        <div class="insurance-point" data-number="2">
-                            <h4>セディア・コネクトならではのお得な保険料！</h4>
-                            <p>団体割引で<span class="discount">30％</span>の優遇料金をご用意しています。大幅な保険料削減が可能です！</p>
-                        </div>
-                        
-                        <div class="insurance-point" data-number="3">
-                            <h4>申請フォームから簡単見積もり依頼！</h4>
-                            <p>セディア・コネクト新規登録に同時に保険見積もりのお申込みができます。手間いらずで手続き完了！</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cta-section">
-                    <div class="cta-icon">💡</div>
-                    <p style="font-size: 18px; color: #0052a3; font-weight: 800;">
-                        保険料を下げたい方は、ぜひお見積りください！
-                    </p>
-                </div>
-            </div>
-            
-            <!-- 連絡先 -->
-            <div class="section">
-                <div class="contact-section">
-                    <div class="contact-icon">📞</div>
-                    <h3>ご加入をご検討の方は</h3>
-                    <p><strong>担当者までご連絡ください！</strong></p>
-                    <p style="margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(0, 102, 204, 0.3);">
-                        <strong>📧 登録用URLを送付いたします</strong>
-                    </p>
-                    <p style="margin-top: 15px; font-size: 15px;">
-                        セディアコネクトに関するお問い合わせは、<br>
-                        <strong>お気軽に担当者までお問い合わせください</strong>
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- ===== フッター ===== -->
-        <footer>
-            <div class="footer-icon">🚀</div>
-            <h2>セディア・コネクト をぜひご利用ください！</h2>
-            <p style="font-size: 16px; margin-bottom: 20px;">
-                PC・スマホの方はこちらをクリック
-            </p>
-            <div class="footer-link">
-                <a href="https://www.pip-maker.com/?view=vwhq" target="_blank">
-                    🔗 https://www.pip-maker.com/?view=vwhq
-                </a>
-            </div>
-            <p style="font-size: 12px; margin-top: 30px;">
-                © 2026 セディア・コネクト. All rights reserved.
-            </p>
-        </footer>
-    </div>
-</body>
-</html>
+
+<div class="container">
+
+<header>
+<div class="header-content">
+<div class="header-icon">🤝</div>
+<h1 class="service-title">セディア・コネクト</h1>
+<p class="subtitle">施工店マッチングサービス</p>
+<p class="tagline">
+貴方のお悩みを解決。<br>
+工事保障付きの現場をご提供
+</p>
+</div>
+</header>
+
+<div class="content">
+
+<section class="section">
+<h2>あなたのお悩みを解決します</h2>
+
+<div class="solution-box">
+
+<div class="card">
+<div class="solution-icon">🏢</div>
+<h3>元請け様へ</h3>
+<p>職人不足を解消し、安定した現場運営を実現します。</p>
+</div>
+
+<div class="card">
+<div class="solution-icon">🔧</div>
+<h3>施工店様へ</h3>
+<p>補償付きの安心現場で成長できます。</p>
+</div>
+
+</div>
+</section>
+
+
+<section class="section">
+<h2>すべて無料</h2>
+
+<div class="card">
+
+<div class="free-items">
+<div class="free-item">入会金無料</div>
+<div class="free-item">手数料無料</div>
+<div class="free-item">補償無料</div>
+</div>
+
+<div class="compensation-highlight">
+最大1000万円補償
+</div>
+
+</div>
+</section>
+
+
+<section class="section">
+<h2>ネットワーク実績</h2>
+
+<div class="stats-grid">
+
+<div class="card">
+<div class="stat-number">16,000</div>
+会員数
+</div>
+
+<div class="card">
+<div class="stat-number">2,600</div>
+紹介数
+</div>
+
+<div class="card">
+<div class="stat-number">80%</div>
+成功率
+</div>
+
+</div>
+</section>
+
+
+<section class="section">
+<h2>補償の流れ</h2>
+
+<div class="card flow-content">
+<span class="flow-number">1</span> マッチング成立
+</div><br>
+
+<div class="card flow-content">
+<span class="flow-number">2</span> 書類提出
+</div><br>
+
+<div class="card flow-content">
+<span
