@@ -89,7 +89,7 @@
             width: 100%;
         }
 
-        /* ヒーローセクション */
+        /* ヒーローセクショ��� */
         .hero {
             background: linear-gradient(135deg, rgba(0, 120, 212, 0.08) 0%, rgba(0, 164, 239, 0.05) 50%, rgba(0, 120, 212, 0.03) 100%);
             border: 2px solid rgba(0, 150, 255, 0.2);
@@ -388,6 +388,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 120, 212, 0.25);
+            margin-right: 0.5rem;
         }
 
         .btn::before {
@@ -406,6 +407,16 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(0, 120, 212, 0.35);
             letter-spacing: 0.5px;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #0078d4;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
         }
 
         @keyframes fadeIn {
@@ -556,11 +567,14 @@
             <span class="close" onclick="closeService()">&times;</span>
             <h2 id="modalTitle"></h2>
             <p id="modalContent"></p>
-            <button class="btn" onclick="closeService()">閉じる</button>
+            <button class="btn" onclick="navigateToService()">サービスページへ</button>
+            <button class="btn btn-secondary" onclick="closeService()">閉じる</button>
         </div>
     </div>
 
     <script>
+        let currentService = null;
+
         const serviceDetails = {
             cloud: {
                 title: 'クラウド管理システム',
@@ -575,7 +589,8 @@
                     </ul>
                     <strong>対象企業：</strong>中堅企業～大企業<br><br>
                     <strong>導入効果：</strong>運用コスト削減、業務効率化、セキュリティ向上
-                `
+                `,
+                url: 'https://example.com/cloud-services'
             },
             analytics: {
                 title: 'データ分析・レポート',
@@ -590,7 +605,8 @@
                     </ul>
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>データ駆動経営、意思決定の高速化、競争力強化
-                `
+                `,
+                url: 'https://example.com/analytics-services'
             },
             security: {
                 title: 'セキュリティ管理',
@@ -605,13 +621,15 @@
                     </ul>
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>情報漏洩防止、法的リスク軽減、信頼性向上
-                `
+                `,
+                url: 'https://example.com/security-services'
             }
         };
 
         function openService(serviceKey) {
             const modal = document.getElementById('serviceModal');
             const details = serviceDetails[serviceKey];
+            currentService = serviceKey;
             
             if (details) {
                 document.getElementById('modalTitle').textContent = details.title;
@@ -620,15 +638,23 @@
             }
         }
 
+        function navigateToService() {
+            if (currentService && serviceDetails[currentService]) {
+                window.location.href = serviceDetails[currentService].url;
+            }
+        }
+
         function closeService() {
             const modal = document.getElementById('serviceModal');
             modal.style.display = 'none';
+            currentService = null;
         }
 
         window.onclick = function(event) {
             const modal = document.getElementById('serviceModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
+                currentService = null;
             }
         }
     </script>
