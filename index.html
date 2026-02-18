@@ -95,9 +95,9 @@
             border: 2px solid rgba(0, 150, 255, 0.2);
             border-radius: 24px;
             color: #1a1a2e;
-            padding: 8rem 0;
+            padding: 3rem 0;
             text-align: center;
-            margin: 3rem 0;
+            margin: 2rem 0;
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(10px);
@@ -133,8 +133,8 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
             font-weight: 900;
             letter-spacing: -2px;
             background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
@@ -144,9 +144,8 @@
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             opacity: 0.75;
-            margin-bottom: 2.5rem;
             color: #1a1a2e;
             font-weight: 500;
         }
@@ -158,7 +157,7 @@
 
         /* サービスセクション - 画像ボタン */
         .services {
-            padding: 6rem 0;
+            padding: 4rem 0;
             background-color: transparent;
         }
 
@@ -187,7 +186,7 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             border-radius: 20px;
             overflow: hidden;
-            height: 320px;
+            height: 280px;
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
@@ -228,24 +227,6 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
-        }
-
-        .service-image-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0078d4 0%, #00a4ef 100%);
-            z-index: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            font-weight: bold;
         }
 
         .service-content {
@@ -406,7 +387,6 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 8px 20px rgba(0, 120, 212, 0.25);
-            margin-right: 0.5rem;
         }
 
         .btn::before {
@@ -425,16 +405,6 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(0, 120, 212, 0.35);
             letter-spacing: 0.5px;
-        }
-
-        .btn-secondary {
-            background: #f0f0f0;
-            color: #0078d4;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: #e0e0e0;
         }
 
         @keyframes fadeIn {
@@ -461,7 +431,7 @@
             }
 
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
 
             .services h2,
@@ -477,11 +447,11 @@
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .services h2,
@@ -536,8 +506,9 @@
             <div class="container">
                 <h2>Our Services</h2>
                 <div class="service-grid">
+                    <!-- 1段目 -->
                     <button class="service-button" onclick="openService('cloud')">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="クラウド管理" class="service-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="クラウド���理" class="service-image">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(26, 26, 46, 0.1) 0%, rgba(26, 26, 46, 0.85) 50%, #1a1a2e 100%); z-index: 1;"></div>
                         <div class="service-content">
                             <h3>☁️ クラウド管理</h3>
@@ -560,6 +531,34 @@
                         <div class="service-content">
                             <h3>🔒 セキュリティ</h3>
                             <p>次世代型の統合セキュリティソリューション</p>
+                        </div>
+                    </button>
+
+                    <!-- 2段目 -->
+                    <button class="service-button" onclick="openService('automation')">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="自動化・AI" class="service-image">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(26, 26, 46, 0.1) 0%, rgba(26, 26, 46, 0.85) 50%, #1a1a2e 100%); z-index: 1;"></div>
+                        <div class="service-content">
+                            <h3>🤖 自動化・AI</h3>
+                            <p>業務効率化のための自動化・AI導入支援</p>
+                        </div>
+                    </button>
+
+                    <button class="service-button" onclick="openService('integration')">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop" alt="統合ソリューション" class="service-image">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(26, 26, 46, 0.1) 0%, rgba(26, 26, 46, 0.85) 50%, #1a1a2e 100%); z-index: 1;"></div>
+                        <div class="service-content">
+                            <h3>🔗 統合ソリューション</h3>
+                            <p>既存システムとの統合・連携ソリューション</p>
+                        </div>
+                    </button>
+
+                    <button class="service-button" onclick="openService('consulting')">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="コンサルティング" class="service-image">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(26, 26, 46, 0.1) 0%, rgba(26, 26, 46, 0.85) 50%, #1a1a2e 100%); z-index: 1;"></div>
+                        <div class="service-content">
+                            <h3>📈 コンサルティング</h3>
+                            <p>DX推進の総合的なコンサルティング支援</p>
                         </div>
                     </button>
                 </div>
@@ -585,8 +584,7 @@
             <span class="close" onclick="closeService()">&times;</span>
             <h2 id="modalTitle"></h2>
             <p id="modalContent"></p>
-            <button class="btn" onclick="navigateToService()">サービスページへ</button>
-            <button class="btn btn-secondary" onclick="closeService()">閉じる</button>
+            <button class="btn" onclick="navigateToLogin()">ログイン画面へ</button>
         </div>
     </div>
 
@@ -608,7 +606,7 @@
                     <strong>対象企業：</strong>中堅企業～大企業<br><br>
                     <strong>導入効果：</strong>運用コスト削減、業務効率化、セキュリティ向上
                 `,
-                url: 'https://example.com/cloud-services'
+                url: 'https://example.com/cloud-login'
             },
             analytics: {
                 title: 'データ分析・レポート',
@@ -624,10 +622,10 @@
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>データ駆動経営、意思決定の高速化、競争力強化
                 `,
-                url: 'https://example.com/analytics-services'
+                url: 'https://example.com/analytics-login'
             },
             security: {
-                title: 'セキュ��ティ管理',
+                title: 'セキュリティ管理',
                 content: `
                     <strong>概要：</strong>企業の重要な情報資産を守る包括的なセキュリティソリューションです。<br><br>
                     <strong>主な機能：</strong>
@@ -640,7 +638,55 @@
                     <strong>対象企業：</strong>全業種・規模<br><br>
                     <strong>導入効果：</strong>情報漏洩防止、法的リスク軽減、信頼性向上
                 `,
-                url: 'https://example.com/security-services'
+                url: 'https://example.com/security-login'
+            },
+            automation: {
+                title: '自動化・AI',
+                content: `
+                    <strong>概要：</strong>業務効率化のための自動化・AI導入を支援します。<br><br>
+                    <strong>主な機能：</strong>
+                    <ul>
+                        <li>RPA（Robotic Process Automation）導入</li>
+                        <li>機械学習モデルの開発・運用</li>
+                        <li>自然言語処理による業務改善</li>
+                        <li>プロセス最適化コンサルティング</li>
+                    </ul>
+                    <strong>対象企業：</strong>全業種・規模<br><br>
+                    <strong>導入効果：</strong>業務効率化、コスト削減、ヒューマンエラー削減
+                `,
+                url: 'https://example.com/automation-login'
+            },
+            integration: {
+                title: '統合ソリューション',
+                content: `
+                    <strong>概要：</strong>既存システムとの統合・連携ソリューションを提供します。<br><br>
+                    <strong>主な機能：</strong>
+                    <ul>
+                        <li>API連携による システム統合</li>
+                        <li>データ連携・同期機能</li>
+                        <li>レガシーシステムの最新化</li>
+                        <li>マイクロサービスアーキテクチャ構築</li>
+                    </ul>
+                    <strong>対象企業：</strong>中堅企業～大企業<br><br>
+                    <strong>導入効果：</strong>業務効率化、システム刷新、スケーラビリティ向上
+                `,
+                url: 'https://example.com/integration-login'
+            },
+            consulting: {
+                title: 'DXコンサルティング',
+                content: `
+                    <strong>概要：</strong>DX推進の総合的なコンサルティング支援を提供します。<br><br>
+                    <strong>主な機能：</strong>
+                    <ul>
+                        <li>DX戦略策定・実行支援</li>
+                        <li>デジタル化ロードマップ作成</li>
+                        <li>組織変革・人材育成支援</li>
+                        <li>成功事例共有・ベストプラクティス提案</li>
+                    </ul>
+                    <strong>対象企業：</strong>全業種・規模<br><br>
+                    <strong>導入効果：</strong>DX推進加速、ビジネス変革、競争力強化
+                `,
+                url: 'https://example.com/consulting-login'
             }
         };
 
@@ -656,7 +702,7 @@
             }
         }
 
-        function navigateToService() {
+        function navigateToLogin() {
             if (currentService && serviceDetails[currentService]) {
                 window.location.href = serviceDetails[currentService].url;
             }
