@@ -15,12 +15,13 @@
 =============================== */
 
 :root{
-  --bg:#ffffff;
-  --sub-bg:#f6f7f9;
+  --bg:#f8fbff;
+  --sub-bg:#eef5ff;
   --card:#ffffff;
-  --main:#000000;
+  --main:#1a2a44;
   --sub:#555;
-  --line:#e5e5e5;
+  --line:#dce7f5;
+  --accent:#0078d4;
 }
 
 *{
@@ -31,7 +32,7 @@
 
 body{
   font-family:"Segoe UI","Hiragino Sans",sans-serif;
-  background:#fff;
+  background:linear-gradient(180deg,#f5faff,#ffffff);
   color:var(--main);
   line-height:1.7;
 }
@@ -39,7 +40,6 @@ body{
 .container{
   max-width:1200px;
   margin:0 auto;
-  background:#fff;
 }
 
 /* ===============================
@@ -56,6 +56,7 @@ header{
 .header-icon{
   font-size:56px;
   margin-bottom:20px;
+  color:var(--accent);
 }
 
 .service-title{
@@ -67,7 +68,7 @@ header{
 .subtitle{
   font-size:22px;
   margin:15px 0 30px;
-  color:#222;
+  color:#0078d4;
   letter-spacing:4px;
 }
 
@@ -98,7 +99,8 @@ header{
   font-weight:800;
   margin-bottom:40px;
   padding-bottom:15px;
-  border-bottom:2px solid #000;
+  border-bottom:3px solid var(--accent);
+  color:var(--accent);
 }
 
 /* ===============================
@@ -116,16 +118,18 @@ header{
   border:1px solid var(--line);
   padding:45px;
   transition:.3s;
+  border-radius:12px;
 }
 
 .solution-item:hover{
   transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  box-shadow:0 20px 40px rgba(0,120,212,.15);
 }
 
 .solution-icon{
   font-size:42px;
   margin-bottom:20px;
+  color:var(--accent);
 }
 
 .solution-item h3{
@@ -147,11 +151,13 @@ header{
   padding:60px 40px;
   text-align:center;
   border:1px solid var(--line);
+  border-radius:15px;
 }
 
 .free-icon{
   font-size:50px;
   margin-bottom:20px;
+  color:var(--accent);
 }
 
 .free-items{
@@ -167,19 +173,20 @@ header{
   padding:25px;
   font-weight:700;
   transition:.3s;
+  border-radius:10px;
 }
 
 .free-item:hover{
-  background:#000;
-  color:#fff;
+  background:#eaf3ff;
 }
 
 .compensation-highlight{
-  background:#000;
+  background:linear-gradient(135deg,#0078d4,#00a4ef);
   color:#fff;
   padding:25px;
   font-size:22px;
   font-weight:900;
+  border-radius:10px;
 }
 
 /* ===============================
@@ -197,11 +204,13 @@ header{
   border:1px solid var(--line);
   padding:40px;
   text-align:center;
+  border-radius:12px;
 }
 
 .stat-icon{
   font-size:36px;
   margin-bottom:15px;
+  color:var(--accent);
 }
 
 .stat-number{
@@ -217,6 +226,7 @@ header{
   background:var(--sub-bg);
   padding:50px;
   border:1px solid var(--line);
+  border-radius:15px;
 }
 
 .flow-step{
@@ -227,10 +237,11 @@ header{
   background:#fff;
   border:1px solid var(--line);
   padding:25px 30px;
+  border-radius:8px;
 }
 
 .flow-number{
-  background:#000;
+  background:var(--accent);
   color:#fff;
   width:36px;
   height:36px;
@@ -246,10 +257,11 @@ header{
 =============================== */
 
 .cta-section{
-  background:#000;
+  background:linear-gradient(135deg,#0078d4,#00a4ef);
   color:#fff;
-  padding:60px;
+  padding:70px;
   text-align:center;
+  border-radius:15px;
 }
 
 .cta-icon{
@@ -266,6 +278,7 @@ header{
   border:1px solid var(--line);
   padding:50px;
   text-align:center;
+  border-radius:15px;
 }
 
 /* ===============================
@@ -273,7 +286,7 @@ header{
 =============================== */
 
 footer{
-  background:#000;
+  background:#0d2a4d;
   color:#fff;
   padding:70px 20px;
   text-align:center;
@@ -282,15 +295,16 @@ footer{
 .footer-link a{
   display:inline-block;
   padding:15px 35px;
-  border:1px solid #fff;
-  color:#fff;
+  background:#fff;
+  color:#0078d4;
   text-decoration:none;
   transition:.3s;
+  border-radius:30px;
+  font-weight:700;
 }
 
 .footer-link a:hover{
-  background:#fff;
-  color:#000;
+  background:#eaf3ff;
 }
 
 /* ===============================
@@ -324,8 +338,6 @@ footer{
 
 <div class="container">
 
-<!-- ================= Header ================= -->
-
 <header>
 
   <div class="header-icon">
@@ -344,12 +356,7 @@ footer{
 </header>
 
 
-<!-- ================= Main ================= -->
-
 <main class="content">
-
-
-<!-- Solution -->
 
 <section class="section">
 
@@ -380,8 +387,6 @@ footer{
 </section>
 
 
-<!-- Free -->
-
 <section class="section">
 
 <div class="free-section">
@@ -402,15 +407,13 @@ footer{
   </div>
 
   <div class="compensation-highlight">
-    成約時のみ報酬発生
+    すべて無料です
   </div>
 
 </div>
 
 </section>
 
-
-<!-- Stats -->
 
 <section class="section">
 
@@ -441,48 +444,21 @@ footer{
 </section>
 
 
-<!-- Flow -->
-
 <section class="section">
 
 <h2>ご利用の流れ</h2>
 
 <div class="flow-container">
 
-  <div class="flow-step">
-    <div class="flow-content">
-      <span class="flow-number">1</span>
-      無料登録
-    </div>
-  </div>
-
-  <div class="flow-step">
-    <div class="flow-content">
-      <span class="flow-number">2</span>
-      案件登録
-    </div>
-  </div>
-
-  <div class="flow-step">
-    <div class="flow-content">
-      <span class="flow-number">3</span>
-      マッチング
-    </div>
-  </div>
-
-  <div class="flow-step">
-    <div class="flow-content">
-      <span class="flow-number">4</span>
-      契約・施工開始
-    </div>
-  </div>
+  <div class="flow-step"><div class="flow-content"><span class="flow-number">1</span>無料登録</div></div>
+  <div class="flow-step"><div class="flow-content"><span class="flow-number">2</span>案件登録</div></div>
+  <div class="flow-step"><div class="flow-content"><span class="flow-number">3</span>マッチング</div></div>
+  <div class="flow-step"><div class="flow-content"><span class="flow-number">4</span>契約・施工開始</div></div>
 
 </div>
 
 </section>
 
-
-<!-- CTA -->
 
 <section class="section">
 
@@ -492,16 +468,13 @@ footer{
     <i class="fas fa-paper-plane"></i>
   </div>
 
-  <h2>まずは無料で始めませんか？</h2>
-
-  <p>登録から利用まで、すべて無料でご利用いただけます。</p>
+  <h2>ご利用を希望される方は、</h2>
+  <p>担当営業所までお問あわせください。</p>
 
 </div>
 
 </section>
 
-
-<!-- Contact -->
 
 <section class="section">
 
@@ -522,14 +495,12 @@ footer{
 </main>
 
 
-<!-- ================= Footer ================= -->
-
 <footer>
 
   <p>© 2026 CEDIA CONNECT All Rights Reserved.</p>
 
   <div class="footer-link" style="margin-top:25px;">
-    <a href="#">無料で登録する</a>
+    <a href="#">お問い合わせはこちら</a>
   </div>
 
 </footer>
